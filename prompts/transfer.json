@@ -1,0 +1,60 @@
+{
+  "pack": "transfer",
+  "prompts": [
+    {
+      "id": "t-001",
+      "text": "Name a player sold for £50m or more during a January transfer window.",
+      "answers": [
+        { "name": "Philippe Coutinho", "tier": 25 },
+        { "name": "Virgil van Dijk", "tier": 50 },
+        { "name": "Pierre-Emerick Aubameyang", "tier": 70 },
+        { "name": "Fernando Torres", "tier": 85 },
+        { "name": "Aymeric Laporte", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-002",
+      "text": "Name a player who joined a club on a free transfer and later won the Premier League with them.",
+      "answers": [
+        { "name": "James Milner", "tier": 25 },
+        { "name": "Joel Matip", "tier": 50 },
+        { "name": "Sol Campbell", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-003",
+      "text": "Name a player sold by a Premier League club for a profit of £50m or more on their original transfer fee.",
+      "answers": [
+        { "name": "Philippe Coutinho", "tier": 25 },
+        { "name": "Gareth Bale", "tier": 50 },
+        { "name": "Cristiano Ronaldo", "tier": 70 },
+        { "name": "Luis Suarez", "tier": 85 },
+        { "name": "Eden Hazard", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-004",
+      "text": "Name a club's current record transfer signing (Big Six, as of the 2026-27 season).",
+      "answers": [
+        { "name": "Declan Rice", "tier": 10 },
+        { "name": "Alexander Isak", "tier": 25 },
+        { "name": "Enzo Fernandez", "tier": 25 },
+        { "name": "Paul Pogba", "tier": 70 },
+        { "name": "Morgan Rogers", "tier": 85 },
+        { "name": "Sandro Tonali", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-005",
+      "text": "Name a player who transferred directly from one Premier League 'Big Six' club to another.",
+      "answers": [
+        { "name": "Alexis Sanchez", "tier": 10 },
+        { "name": "Robin van Persie", "tier": 25 },
+        { "name": "Fernando Torres", "tier": 50 },
+        { "name": "David Luiz", "tier": 70 },
+        { "name": "Willian", "tier": 85 },
+        { "name": "Shaun Wright-Phillips", "tier": 100 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "pack": "club-chelsea",
+  "prompts": [
+    {
+      "id": "che-001",
+      "text": "Name a player who played for Chelsea in the 2004-05 title-winning season (Mourinho's first).",
+      "answers": [
+        { "name": "Frank Lampard", "tier": 10 },
+        { "name": "John Terry", "tier": 25 },
+        { "name": "Didier Drogba", "tier": 50 },
+        { "name": "Glen Johnson", "tier": 70 },
+        { "name": "Lenny Pidgeley", "tier": 100 }
+      ]
+    },
+    {
+      "id": "che-002",
+      "text": "Name a player who played for Chelsea in their 2009-10 Premier League and FA Cup double season.",
+      "answers": [
+        { "name": "Didier Drogba", "tier": 10 },
+        { "name": "Ashley Cole", "tier": 25 },
+        { "name": "Nicolas Anelka", "tier": 50 },
+        { "name": "Florent Malouda", "tier": 50 },
+        { "name": "Yuri Zhirkov", "tier": 85 },
+        { "name": "Michael Mancienne", "tier": 100 }
+      ]
+    }
+  ]
+}

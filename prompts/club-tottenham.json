@@ -1,0 +1,19 @@
+{
+  "pack": "club-tottenham",
+  "prompts": [
+    {
+      "id": "tot-001",
+      "text": "Name a player who was in Tottenham's squad for the 2019 Champions League final against Liverpool.",
+      "answers": [
+        { "name": "Harry Kane", "tier": 10 },
+        { "name": "Son Heung-min", "tier": 25 },
+        { "name": "Dele Alli", "tier": 25 },
+        { "name": "Kieran Trippier", "tier": 50 },
+        { "name": "Lucas Moura", "tier": 70 },
+        { "name": "Fernando Llorente", "tier": 70 },
+        { "name": "Danny Rose", "tier": 85 },
+        { "name": "Kyle Walker-Peters", "tier": 100 }
+      ]
+    }
+  ]
+}

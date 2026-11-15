@@ -1,0 +1,119 @@
+{
+  "pack": "deep-cut",
+  "prompts": [
+    {
+      "id": "dc-001",
+      "text": "Name a player who has scored for 5 or more different Premier League clubs.",
+      "answers": [
+        { "name": "Craig Bellamy", "tier": 25 },
+        { "name": "Nicolas Anelka", "tier": 25 },
+        { "name": "Peter Crouch", "tier": 50 },
+        { "name": "Darren Bent", "tier": 70 },
+        { "name": "Marcus Bent", "tier": 85 },
+        { "name": "Les Ferdinand", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-002",
+      "text": "Name a player who won the Premier League title with two different clubs.",
+      "answers": [
+        { "name": "Nicolas Anelka", "tier": 25 },
+        { "name": "Carlos Tevez", "tier": 25 },
+        { "name": "N'Golo Kante", "tier": 50 },
+        { "name": "Riyad Mahrez", "tier": 50 },
+        { "name": "Gael Clichy", "tier": 70 },
+        { "name": "James Milner", "tier": 70 },
+        { "name": "Robert Huth", "tier": 85 },
+        { "name": "Henning Berg", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-003",
+      "text": "Name a goalkeeper who has scored a goal in the Premier League.",
+      "answers": [
+        { "name": "Alisson", "tier": 25 },
+        { "name": "Asmir Begovic", "tier": 50 },
+        { "name": "Tim Howard", "tier": 50 },
+        { "name": "Paul Robinson", "tier": 70 },
+        { "name": "Brad Friedel", "tier": 85 },
+        { "name": "Peter Schmeichel", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-004",
+      "text": "Name a player who has played for both Arsenal and Tottenham Hotspur.",
+      "answers": [
+        { "name": "Sol Campbell", "tier": 10 },
+        { "name": "Emmanuel Adebayor", "tier": 25 },
+        { "name": "William Gallas", "tier": 50 },
+        { "name": "David Bentley", "tier": 70 },
+        { "name": "Pat Jennings", "tier": 85 },
+        { "name": "Rohan Ricketts", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-005",
+      "text": "Name a manager who has managed 3 or more different Premier League clubs.",
+      "answers": [
+        { "name": "Sam Allardyce", "tier": 25 },
+        { "name": "Harry Redknapp", "tier": 25 },
+        { "name": "Mark Hughes", "tier": 50 },
+        { "name": "Steve Bruce", "tier": 50 },
+        { "name": "Roy Hodgson", "tier": 70 },
+        { "name": "Alan Pardew", "tier": 85 },
+        { "name": "David Moyes", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-006",
+      "text": "Name a player who scored on their Premier League debut.",
+      "answers": [
+        { "name": "Sergio Aguero", "tier": 25 },
+        { "name": "Marcus Rashford", "tier": 50 },
+        { "name": "Anthony Martial", "tier": 70 },
+        { "name": "Federico Macheda", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-007",
+      "text": "Name a player who has won the Premier League Golden Boot with two different clubs.",
+      "answers": [
+        { "name": "Alan Shearer", "tier": 25 },
+        { "name": "Robin van Persie", "tier": 50 },
+        { "name": "Jimmy Floyd Hasselbaink", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-008",
+      "text": "Name a player who played Premier League football for a Welsh club.",
+      "answers": [
+        { "name": "Ashley Williams", "tier": 25 },
+        { "name": "Michu", "tier": 50 },
+        { "name": "Gylfi Sigurdsson", "tier": 50 },
+        { "name": "Wilfried Bony", "tier": 70 },
+        { "name": "Joe Allen", "tier": 85 },
+        { "name": "Garry Monk", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-009",
+      "text": "Name a club that has played in the Premier League for only one season.",
+      "answers": [
+        { "name": "Blackpool", "tier": 25 },
+        { "name": "Swindon Town", "tier": 50 },
+        { "name": "Barnsley", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-010",
+      "text": "Name a player who has scored a Premier League hat-trick for three different clubs.",
+      "answers": [
+        { "name": "Teddy Sheringham", "tier": 10 },
+        { "name": "Nicolas Anelka", "tier": 25 },
+        { "name": "Les Ferdinand", "tier": 50 },
+        { "name": "Yakubu", "tier": 70 },
+        { "name": "Kevin Campbell", "tier": 100 }
+      ]
+    }
+  ]
+}

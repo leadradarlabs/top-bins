@@ -1,0 +1,31 @@
+{
+  "pack": "club-arsenal",
+  "prompts": [
+    {
+      "id": "ars-001",
+      "text": "Name a player who played for Arsenal in the Invincibles season (2003-04).",
+      "answers": [
+        { "name": "Thierry Henry", "tier": 10 },
+        { "name": "Patrick Vieira", "tier": 25 },
+        { "name": "Dennis Bergkamp", "tier": 25 },
+        { "name": "Robert Pires", "tier": 50 },
+        { "name": "Freddie Ljungberg", "tier": 50 },
+        { "name": "Lauren", "tier": 70 },
+        { "name": "Edu", "tier": 85 },
+        { "name": "Jeremie Aliadiere", "tier": 100 }
+      ]
+    },
+    {
+      "id": "ars-002",
+      "text": "Name a player who played for Arsenal in their 1997-98 title-winning season (Arsene Wenger's first title).",
+      "answers": [
+        { "name": "Tony Adams", "tier": 10 },
+        { "name": "Patrick Vieira", "tier": 25 },
+        { "name": "Emmanuel Petit", "tier": 25 },
+        { "name": "Nicolas Anelka", "tier": 50 },
+        { "name": "Nigel Winterburn", "tier": 70 },
+        { "name": "Christopher Wreh", "tier": 100 }
+      ]
+    }
+  ]
+}

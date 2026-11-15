@@ -1,0 +1,29 @@
+{
+  "pack": "club-manutd",
+  "prompts": [
+    {
+      "id": "mu-001",
+      "text": "Name a player who played for Manchester United in the 1998-99 Treble season.",
+      "answers": [
+        { "name": "David Beckham", "tier": 10 },
+        { "name": "Ryan Giggs", "tier": 25 },
+        { "name": "Paul Scholes", "tier": 25 },
+        { "name": "Jordi Cruyff", "tier": 70 },
+        { "name": "Erik Nevland", "tier": 100 }
+      ]
+    },
+    {
+      "id": "mu-002",
+      "text": "Name a player who was in Manchester United's squad for the 2008 Champions League final win over Chelsea.",
+      "answers": [
+        { "name": "Cristiano Ronaldo", "tier": 10 },
+        { "name": "Wayne Rooney", "tier": 25 },
+        { "name": "Ryan Giggs", "tier": 25 },
+        { "name": "Carlos Tevez", "tier": 50 },
+        { "name": "Nemanja Vidic", "tier": 70 },
+        { "name": "Owen Hargreaves", "tier": 85 },
+        { "name": "Anderson", "tier": 100 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "pack": "club-mancity",
+  "prompts": [
+    {
+      "id": "mci-001",
+      "text": "Name a player who played for Manchester City in their 2011-12 title-winning season (Aguero's 93:20 moment).",
+      "answers": [
+        { "name": "Sergio Aguero", "tier": 10 },
+        { "name": "Yaya Toure", "tier": 25 },
+        { "name": "David Silva", "tier": 25 },
+        { "name": "Joe Hart", "tier": 50 },
+        { "name": "Vincent Kompany", "tier": 50 },
+        { "name": "Micah Richards", "tier": 70 },
+        { "name": "Gareth Barry", "tier": 70 },
+        { "name": "Owen Hargreaves", "tier": 100 }
+      ]
+    }
+  ]
+}

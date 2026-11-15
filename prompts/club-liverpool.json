@@ -1,0 +1,30 @@
+{
+  "pack": "club-liverpool",
+  "prompts": [
+    {
+      "id": "liv-001",
+      "text": "Name a player who played for Liverpool in their 2019-20 Premier League title season.",
+      "answers": [
+        { "name": "Mohamed Salah", "tier": 10 },
+        { "name": "Virgil van Dijk", "tier": 25 },
+        { "name": "Sadio Mane", "tier": 25 },
+        { "name": "Curtis Jones", "tier": 70 },
+        { "name": "Neco Williams", "tier": 85 },
+        { "name": "Harvey Elliott", "tier": 100 }
+      ]
+    },
+    {
+      "id": "liv-002",
+      "text": "Name a player who was in Liverpool's squad for the 2005 Champions League final (the 'Miracle of Istanbul').",
+      "answers": [
+        { "name": "Steven Gerrard", "tier": 10 },
+        { "name": "Jamie Carragher", "tier": 25 },
+        { "name": "Xabi Alonso", "tier": 50 },
+        { "name": "Djimi Traore", "tier": 50 },
+        { "name": "Dietmar Hamann", "tier": 70 },
+        { "name": "Vladimir Smicer", "tier": 85 },
+        { "name": "Djibril Cisse", "tier": 100 }
+      ]
+    }
+  ]
+}
