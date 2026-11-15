@@ -1,6 +1,7 @@
-// localStorage-only persistence: streaks + best scores. No accounts.
+// localStorage-only persistence: today's result (for the one-attempt-per-day
+// lock and revisit), streaks, and best score. No accounts.
 
-const STORE_KEY = "topbins:v1";
+const STORE_KEY = "topbins:v2";
 
 function loadStore() {
   try {
@@ -20,19 +21,17 @@ function saveStore(data) {
 }
 
 // modeKey is always "deep-cut" (single-mode game), kept as a param for clarity.
-function recordResult(modeKey, dateStr, score) {
+// detail: { score, maxScore, pointsSequence, tierBreakdown }
+function recordResult(modeKey, dateStr, detail) {
   const store = loadStore();
   store.results = store.results || {};
   store.results[modeKey] = store.results[modeKey] || {};
-  store.results[modeKey][dateStr] = score;
+  store.results[modeKey][dateStr] = detail;
 
   store.best = store.best || {};
-  store.best[modeKey] = Math.max(store.best[modeKey] || 0, score);
+  store.best[modeKey] = Math.max(store.best[modeKey] || 0, detail.score);
 
-  // Streak: consecutive days (by calendar date) with a played Deep Cut result.
-  if (modeKey === "deep-cut") {
-    store.streak = computeStreak(store.results["deep-cut"], dateStr);
-  }
+  store.streak = computeStreak(store.results[modeKey], dateStr);
 
   saveStore(store);
   return store;
@@ -57,9 +56,13 @@ function computeStreak(resultsByDate, todayStr) {
   return streak;
 }
 
-function hasPlayedToday(modeKey, dateStr) {
+function getResultForDate(modeKey, dateStr) {
   const store = loadStore();
-  return !!(store.results && store.results[modeKey] && store.results[modeKey][dateStr] !== undefined);
+  return store.results && store.results[modeKey] && store.results[modeKey][dateStr];
+}
+
+function hasPlayedToday(modeKey, dateStr) {
+  return getResultForDate(modeKey, dateStr) !== undefined;
 }
 
 function getBest(modeKey) {
@@ -72,4 +75,12 @@ function getStreak() {
   return store.streak || 0;
 }
 
-window.TopBinsStorage = { loadStore, saveStore, recordResult, hasPlayedToday, getBest, getStreak };
+window.TopBinsStorage = {
+  loadStore,
+  saveStore,
+  recordResult,
+  getResultForDate,
+  hasPlayedToday,
+  getBest,
+  getStreak,
+};

@@ -30,38 +30,64 @@
       </div>
 
       <button class="btn-primary btn-play" id="btn-play">Play today's Deep Cuts</button>
+      <div class="next-game-countdown" id="home-countdown" hidden></div>
 
       <footer class="site-footer">7 prompts. 25 seconds each. Perfect day = 700.</footer>
     </section>
 
     <!-- GAME -->
     <section id="screen-game" class="screen">
-      <div class="game-header">
-        <span id="game-mode-label">Deep Cuts</span>
-        <div class="progress-dots" id="progress-dots"></div>
-      </div>
+      <div class="game-body">
+        <div class="game-main">
+          <div class="game-header">
+            <span id="game-mode-label">Deep Cuts</span>
+            <div class="progress-dots" id="progress-dots"></div>
+          </div>
 
-      <div class="timer-ring" id="timer-ring">
-        <svg width="92" height="92" viewBox="0 0 92 92">
-          <circle class="track" cx="46" cy="46" r="40"></circle>
-          <circle class="progress" id="timer-circle" cx="46" cy="46" r="40"></circle>
-        </svg>
-        <div class="time" id="timer-seconds">25</div>
-      </div>
+          <div class="timer-ring" id="timer-ring">
+            <svg width="92" height="92" viewBox="0 0 92 92">
+              <circle class="track" cx="46" cy="46" r="40"></circle>
+              <circle class="progress" id="timer-circle" cx="46" cy="46" r="40"></circle>
+            </svg>
+            <div class="time" id="timer-seconds">25</div>
+            <div class="preview-badge" id="preview-badge">3</div>
+          </div>
 
-      <div class="prompt-text" id="prompt-text">Loading…</div>
+          <div class="prompt-text" id="prompt-text">Loading…</div>
 
-      <form class="guess-form" id="guess-form" autocomplete="off">
-        <div class="guess-input-wrap">
-          <input class="guess-input" id="guess-input" type="text" placeholder="Last name…" autocomplete="off" autocapitalize="words" />
-          <div class="autocomplete-list" id="autocomplete-list"></div>
+          <form class="guess-form" id="guess-form" autocomplete="off">
+            <input class="guess-input" id="guess-input" type="text" placeholder="Last name…" autocomplete="off" autocapitalize="words" autocorrect="off" spellcheck="false" />
+            <button class="guess-submit" type="submit">Go</button>
+          </form>
+          <div class="feedback" id="feedback"></div>
+
+          <div class="running-score">
+            Score: <strong id="running-score">0</strong> / <span id="running-max">700</span>
+          </div>
+
+          <!-- TIER REVEAL OVERLAY (covers only this column, so the meter stays visible) -->
+          <div class="tier-reveal" id="tier-reveal">
+            <div class="tier-name" id="reveal-name"></div>
+            <div class="tier-points" id="reveal-points"></div>
+            <div class="tier-answer" id="reveal-answer"></div>
+          </div>
         </div>
-        <button class="guess-submit" type="submit">Go</button>
-      </form>
-      <div class="feedback" id="feedback"></div>
 
-      <div class="running-score">
-        Score: <strong id="running-score">0</strong> / <span id="running-max">700</span>
+        <div class="meter-rail">
+          <div class="meter-cap meter-cap-top">Top Bins</div>
+          <div class="meter-track" id="meter-track">
+            <div class="meter-band" style="bottom:0%"></div>
+            <div class="meter-band" style="bottom:14.28%"></div>
+            <div class="meter-band" style="bottom:28.57%"></div>
+            <div class="meter-band" style="bottom:42.85%"></div>
+            <div class="meter-band" style="bottom:57.14%"></div>
+            <div class="meter-band" style="bottom:71.42%"></div>
+            <div class="meter-band" style="bottom:85.71%"></div>
+            <div class="meter-fill" id="meter-fill"></div>
+            <div class="meter-ball" id="meter-ball">⚽</div>
+          </div>
+          <div class="meter-cap meter-cap-bottom">0</div>
+        </div>
       </div>
     </section>
 
@@ -73,6 +99,7 @@
       <div class="results-score">
         <div class="big" id="final-score">0</div>
         <div class="max">out of <span id="final-max">700</span></div>
+        <div class="rating-band" id="rating-band"></div>
       </div>
       <div class="stats-row">
         <div class="stat-box">
@@ -85,23 +112,12 @@
         </div>
       </div>
       <div class="tier-breakdown" id="tier-breakdown"></div>
+      <div class="next-game-countdown" id="results-countdown"></div>
       <div class="results-actions">
         <button class="btn-primary" id="btn-share">Copy share card</button>
         <button class="btn-secondary" data-back="home">Back to home</button>
       </div>
     </section>
-
-    <!-- TIER REVEAL OVERLAY -->
-    <div class="tier-reveal" id="tier-reveal">
-      <div class="tier-name" id="reveal-name"></div>
-      <div class="tier-points" id="reveal-points"></div>
-      <div class="rarity-bar" id="rarity-bar">
-        <div class="rarity-fill" id="rarity-fill"></div>
-        <div class="rarity-marker" id="rarity-marker"></div>
-      </div>
-      <div class="rarity-labels"><span>Tap-In</span><span>Top Bins</span></div>
-      <div class="tier-answer" id="reveal-answer"></div>
-    </div>
 
   </div>
 

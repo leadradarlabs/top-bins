@@ -1,4 +1,4 @@
-// Core game engine: timer, scoring, tier reveal. No framework, callback-driven.
+// Core game engine: preview, timer, scoring. No framework, callback-driven.
 
 const TIER_NAMES = {
   0: "Blocked",
@@ -11,6 +11,8 @@ const TIER_NAMES = {
 };
 
 const PROMPT_SECONDS = 25;
+const PREVIEW_SECONDS = 3;
+const WRONG_GUESS_PENALTY_SECONDS = 3;
 
 class TopBinsGame {
   constructor(prompts, handlers) {
@@ -19,8 +21,10 @@ class TopBinsGame {
     this.index = -1;
     this.results = []; // { promptId, points, tierName, matchedName, timedOut }
     this.timerId = null;
+    this.previewTimeoutId = null;
     this.secondsLeft = PROMPT_SECONDS;
     this.locked = false; // true once current prompt is scored
+    this.timerRunning = false; // false during the 3s preview
   }
 
   get currentPrompt() {
@@ -47,9 +51,17 @@ class TopBinsGame {
     }
     this.secondsLeft = PROMPT_SECONDS;
     this.locked = false;
-    this._emit("promptStart", { index: this.index, prompt: this.currentPrompt, total: this.prompts.length });
-    this._emit("tick", this.secondsLeft);
+    this.timerRunning = false;
     this._clearTimer();
+    this._emit("promptStart", { index: this.index, prompt: this.currentPrompt, total: this.prompts.length });
+    this._emit("previewStart", { duration: PREVIEW_SECONDS });
+    this.previewTimeoutId = setTimeout(() => this._startTimer(), PREVIEW_SECONDS * 1000);
+  }
+
+  _startTimer() {
+    this.timerRunning = true;
+    this._emit("timerStart", { seconds: this.secondsLeft });
+    this._emit("tick", this.secondsLeft);
     this.timerId = setInterval(() => this._tick(), 1000);
   }
 
@@ -64,14 +76,20 @@ class TopBinsGame {
   }
 
   submitGuess(rawText) {
-    if (this.locked) return null;
+    if (this.locked || !this.timerRunning) return null;
     const match = window.TopBinsFuzzy.matchAnswer(rawText, this.currentPrompt.answers);
     if (match) {
       this._clearTimer();
       this._score(match, false);
       return { correct: true, tier: match.tier, tierName: TIER_NAMES[match.tier], name: match.name };
     }
-    this._emit("wrongGuess", rawText);
+    this.secondsLeft = Math.max(0, this.secondsLeft - WRONG_GUESS_PENALTY_SECONDS);
+    this._emit("wrongGuess", { text: rawText, penalty: WRONG_GUESS_PENALTY_SECONDS, secondsLeft: this.secondsLeft });
+    this._emit("tick", this.secondsLeft);
+    if (this.secondsLeft <= 0) {
+      this._clearTimer();
+      this._score(null, true);
+    }
     return { correct: false };
   }
 
@@ -113,6 +131,10 @@ class TopBinsGame {
       clearInterval(this.timerId);
       this.timerId = null;
     }
+    if (this.previewTimeoutId) {
+      clearTimeout(this.previewTimeoutId);
+      this.previewTimeoutId = null;
+    }
   }
 
   _emit(event, payload) {
@@ -123,3 +145,4 @@ class TopBinsGame {
 window.TopBinsGame = TopBinsGame;
 window.TopBinsTierNames = TIER_NAMES;
 window.TOP_BINS_PROMPT_SECONDS = PROMPT_SECONDS;
+window.TOP_BINS_PREVIEW_SECONDS = PREVIEW_SECONDS;

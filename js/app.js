@@ -8,18 +8,19 @@
   }
 
   document.querySelectorAll("[data-back]").forEach((btn) => {
-    btn.addEventListener("click", () => showScreen("screen-home"));
+    btn.addEventListener("click", () => {
+      showScreen("screen-home");
+      renderHomeState();
+    });
   });
 
-  async function loadPack(path) {
-    const res = await fetch(path);
-    if (!res.ok) throw new Error(`Failed to load ${path}`);
-    return res.json();
-  }
-
-  function renderHomeStats() {
-    document.getElementById("stat-streak").textContent = window.TopBinsStorage.getStreak();
-    document.getElementById("stat-best").textContent = window.TopBinsStorage.getBest("deep-cut");
+  let pack = null;
+  async function loadPack() {
+    if (pack) return pack;
+    const res = await fetch("prompts/deep-cut.json");
+    if (!res.ok) throw new Error("Failed to load prompts/deep-cut.json");
+    pack = await res.json();
+    return pack;
   }
 
   // ---------- Count-up animation ----------
@@ -33,31 +34,96 @@
     function tick(now) {
       const t = Math.min(1, (now - start) / duration);
       const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
-      const value = Math.round(from + (to - from) * eased);
-      el.textContent = value;
+      el.textContent = Math.round(from + (to - from) * eased);
       if (t < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
   }
 
+  // ---------- Rating bands ----------
+
+  const RATING_BANDS = [
+    { max: 99, label: "Sunday League" },
+    { max: 249, label: "Academy Prospect" },
+    { max: 399, label: "First-Team Regular" },
+    { max: 549, label: "Club Legend" },
+    { max: 649, label: "Hall of Famer" },
+    { max: Infinity, label: "Top Bins Merchant" },
+  ];
+  function ratingBand(score) {
+    return RATING_BANDS.find((b) => score <= b.max).label;
+  }
+
+  // ---------- Scheduler (shared America/New_York midnight reset) ----------
+
+  const MODE_KEY = "deep-cut";
+  let DATE_STR = window.TopBinsSeed.todayDateString();
+
+  function renderHomeState() {
+    document.getElementById("stat-streak").textContent = window.TopBinsStorage.getStreak();
+    document.getElementById("stat-best").textContent = window.TopBinsStorage.getBest(MODE_KEY);
+
+    const playBtn = document.getElementById("btn-play");
+    const countdownEl = document.getElementById("home-countdown");
+    const played = window.TopBinsStorage.hasPlayedToday(MODE_KEY, DATE_STR);
+    playBtn.hidden = played;
+    countdownEl.hidden = !played;
+    if (played) {
+      const detail = window.TopBinsStorage.getResultForDate(MODE_KEY, DATE_STR);
+      countdownEl.innerHTML = `Today's Deep Cuts: <strong>${detail.score}/${detail.maxScore}</strong><br>Next one in <strong id="home-countdown-time"></strong>`;
+    }
+  }
+
+  function updateCountdownTexts() {
+    const ms = window.TopBinsSeed.msUntilNextReset();
+    const text = window.TopBinsSeed.formatCountdown(ms);
+    const homeTime = document.getElementById("home-countdown-time");
+    if (homeTime) homeTime.textContent = text;
+    const resultsCountdown = document.getElementById("results-countdown");
+    if (resultsCountdown && screens["screen-results"].classList.contains("active")) {
+      resultsCountdown.innerHTML = `Next Deep Cuts in <strong>${text}</strong>`;
+    }
+  }
+
+  function checkClock() {
+    const nowDateStr = window.TopBinsSeed.todayDateString();
+    if (nowDateStr !== DATE_STR) {
+      // Midnight passed while the page was open: roll over to the new day.
+      DATE_STR = nowDateStr;
+      activeGame = null;
+      showScreen("screen-home");
+      renderHomeState();
+    } else {
+      updateCountdownTexts();
+    }
+  }
+
+  setInterval(checkClock, 20000);
+  setTimeout(checkClock, window.TopBinsSeed.msUntilNextReset() + 1000);
+
   // ---------- Game flow ----------
 
   let activeGame = null;
-  const MODE_KEY = "deep-cut";
-  const DATE_STR = window.TopBinsSeed.todayDateString();
 
   async function startDeepCut() {
-    const pack = await loadPack("prompts/deep-cut.json");
-    const todays = window.TopBinsSeed.seededPick(pack.prompts, 7, `deep-cut:${DATE_STR}`);
+    if (window.TopBinsStorage.hasPlayedToday(MODE_KEY, DATE_STR)) {
+      showResultsFromStorage();
+      return;
+    }
+    const p = await loadPack();
+    const todays = window.TopBinsSeed.seededPick(p.prompts, 7, `deep-cut:${DATE_STR}`);
     launchGame(todays);
   }
 
   function launchGame(prompts) {
     document.getElementById("running-max").textContent = prompts.length * 100;
     buildProgressDots(prompts.length);
+    setMeter(0, prompts.length * 100);
 
     activeGame = new window.TopBinsGame(prompts, {
       promptStart: onPromptStart,
+      previewStart: onPreviewStart,
+      timerStart: onTimerStart,
       tick: onTick,
       wrongGuess: onWrongGuess,
       scored: onScored,
@@ -68,7 +134,6 @@
     document.getElementById("guess-input").value = "";
     document.getElementById("feedback").textContent = "";
     document.getElementById("running-score").textContent = "0";
-    hideAutocomplete();
     activeGame.start();
   }
 
@@ -91,19 +156,48 @@
     });
   }
 
+  function setMeter(score, maxScore) {
+    const pct = maxScore === 0 ? 0 : Math.max(0, Math.min(100, (score / maxScore) * 100));
+    document.getElementById("meter-fill").style.height = `${pct}%`;
+    document.getElementById("meter-ball").style.bottom = `${pct}%`;
+  }
+
   const CIRCUMFERENCE = 2 * Math.PI * 40;
+  let previewIntervalId = null;
 
   function onPromptStart({ index, prompt }) {
     updateProgressDots(index);
     document.getElementById("prompt-text").textContent = prompt.text;
     document.getElementById("feedback").textContent = "";
     document.getElementById("guess-input").value = "";
-    hideAutocomplete();
-    document.getElementById("guess-input").focus();
+    const input = document.getElementById("guess-input");
+    input.disabled = true;
+  }
+
+  function onPreviewStart({ duration }) {
+    const ring = document.getElementById("timer-ring");
+    const badge = document.getElementById("preview-badge");
+    ring.classList.add("previewing");
+    ring.classList.remove("urgent");
+    let remaining = duration;
+    badge.textContent = remaining;
+    clearInterval(previewIntervalId);
+    previewIntervalId = setInterval(() => {
+      remaining--;
+      if (remaining > 0) badge.textContent = remaining;
+      else clearInterval(previewIntervalId);
+    }, 1000);
+  }
+
+  function onTimerStart() {
+    clearInterval(previewIntervalId);
+    document.getElementById("timer-ring").classList.remove("previewing");
+    const input = document.getElementById("guess-input");
+    input.disabled = false;
+    input.focus();
     const circle = document.getElementById("timer-circle");
     circle.style.strokeDasharray = `${CIRCUMFERENCE}`;
     circle.style.strokeDashoffset = "0";
-    document.getElementById("timer-ring").classList.remove("urgent");
   }
 
   function onTick(secondsLeft) {
@@ -114,11 +208,10 @@
     document.getElementById("timer-ring").classList.toggle("urgent", secondsLeft <= 7);
   }
 
-  function onWrongGuess() {
+  function onWrongGuess({ penalty }) {
     const fb = document.getElementById("feedback");
-    fb.textContent = "Not on the sheet — keep going.";
+    fb.textContent = `Not on the sheet — keep going (-${penalty}s).`;
     document.getElementById("guess-input").value = "";
-    hideAutocomplete();
     document.getElementById("guess-input").focus();
   }
 
@@ -128,31 +221,21 @@
       animateCount(document.getElementById("running-score"), previousTotal, totalScore);
       activeGame.advance();
     });
+    setMeter(totalScore, activeGame.maxScore);
   }
-
-  const TIER_MIN = 10;
-  const TIER_MAX = 100;
 
   function showTierReveal(result, onDone) {
     const overlay = document.getElementById("tier-reveal");
     const nameEl = document.getElementById("reveal-name");
     const pointsEl = document.getElementById("reveal-points");
     const answerEl = document.getElementById("reveal-answer");
-    const fillEl = document.getElementById("rarity-fill");
-    const markerEl = document.getElementById("rarity-marker");
 
     nameEl.textContent = result.tierName;
     nameEl.className = `tier-name tier-${result.points}`;
     pointsEl.textContent = `+${result.points} points`;
     pointsEl.className = `tier-points tier-${result.points}`;
-    answerEl.textContent = result.timedOut ? "Time's up." : `"${result.matchedName}"`;
+    answerEl.textContent = result.timedOut ? "Time's up." : `Matched: ${result.matchedName}`;
 
-    const pct = result.points === 0 ? 0 : Math.max(0, Math.min(100, ((result.points - TIER_MIN) / (TIER_MAX - TIER_MIN)) * 100));
-    fillEl.className = `rarity-fill tier-${result.points}`;
-    fillEl.style.width = "0%";
-    markerEl.style.left = "0%";
-
-    // restart animations
     nameEl.style.animation = "none";
     pointsEl.style.animation = "none";
     answerEl.style.animation = "none";
@@ -160,10 +243,6 @@
       nameEl.style.animation = "";
       pointsEl.style.animation = "";
       answerEl.style.animation = "";
-      requestAnimationFrame(() => {
-        fillEl.style.width = `${pct}%`;
-        markerEl.style.left = `${pct}%`;
-      });
     });
 
     overlay.classList.add("active");
@@ -174,20 +253,32 @@
   }
 
   function onGameEnd({ totalScore, maxScore, tierBreakdown, pointsSequence }) {
-    document.getElementById("final-max").textContent = maxScore;
+    const detail = { score: totalScore, maxScore, pointsSequence, tierBreakdown };
+    const store = window.TopBinsStorage.recordResult(MODE_KEY, DATE_STR, detail);
+    renderResults(detail, store.streak);
+  }
 
-    const store = window.TopBinsStorage.recordResult(MODE_KEY, DATE_STR, totalScore);
-    renderTierBreakdown(tierBreakdown);
+  function showResultsFromStorage() {
+    const detail = window.TopBinsStorage.getResultForDate(MODE_KEY, DATE_STR);
+    renderResults(detail, window.TopBinsStorage.getStreak(), true);
+  }
 
-    document.getElementById("results-streak").textContent = store.streak || 0;
+  function renderResults(detail, streak, skipAnimation) {
+    document.getElementById("final-max").textContent = detail.maxScore;
+    document.getElementById("rating-band").textContent = ratingBand(detail.score);
+    renderTierBreakdown(detail.tierBreakdown);
+
+    document.getElementById("results-streak").textContent = streak || 0;
     document.getElementById("results-best").textContent = window.TopBinsStorage.getBest(MODE_KEY);
+    document.getElementById("results-countdown").innerHTML =
+      `Next Deep Cuts in <strong>${window.TopBinsSeed.formatCountdown(window.TopBinsSeed.msUntilNextReset())}</strong>`;
 
     const shareText = window.TopBinsShare.buildShareCard({
       dateStr: DATE_STR,
-      pointsSequence,
-      totalScore,
-      maxScore,
-      streak: store.streak,
+      pointsSequence: detail.pointsSequence,
+      totalScore: detail.score,
+      maxScore: detail.maxScore,
+      streak,
     });
 
     const shareBtn = document.getElementById("btn-share");
@@ -198,11 +289,14 @@
     };
 
     showScreen("screen-results");
-    renderHomeStats();
 
     const finalScoreEl = document.getElementById("final-score");
-    finalScoreEl.textContent = "0";
-    setTimeout(() => animateCount(finalScoreEl, 0, totalScore, 1000), 150);
+    if (skipAnimation) {
+      finalScoreEl.textContent = detail.score;
+    } else {
+      finalScoreEl.textContent = "0";
+      setTimeout(() => animateCount(finalScoreEl, 0, detail.score, 1000), 150);
+    }
   }
 
   const TIER_ORDER = [100, 85, 70, 50, 25, 10, 0];
@@ -220,75 +314,6 @@
     });
   }
 
-  // ---------- Autocomplete ----------
-
-  let suggestions = [];
-  let activeSuggestionIndex = -1;
-
-  function hideAutocomplete() {
-    suggestions = [];
-    activeSuggestionIndex = -1;
-    const list = document.getElementById("autocomplete-list");
-    list.innerHTML = "";
-    list.classList.remove("open");
-  }
-
-  function renderAutocomplete() {
-    const list = document.getElementById("autocomplete-list");
-    list.innerHTML = "";
-    if (suggestions.length === 0) {
-      list.classList.remove("open");
-      return;
-    }
-    suggestions.forEach((ans, i) => {
-      const item = document.createElement("div");
-      item.className = "autocomplete-item" + (i === activeSuggestionIndex ? " active" : "");
-      item.textContent = ans.name;
-      item.addEventListener("mousedown", (e) => {
-        e.preventDefault();
-        pickSuggestion(i);
-      });
-      list.appendChild(item);
-    });
-    list.classList.add("open");
-  }
-
-  function pickSuggestion(i) {
-    const input = document.getElementById("guess-input");
-    input.value = suggestions[i].name;
-    hideAutocomplete();
-    input.focus();
-  }
-
-  document.getElementById("guess-input").addEventListener("input", (e) => {
-    if (!activeGame || !activeGame.currentPrompt) return;
-    suggestions = window.TopBinsFuzzy.filterSuggestions(e.target.value, activeGame.currentPrompt.answers);
-    activeSuggestionIndex = -1;
-    renderAutocomplete();
-  });
-
-  document.getElementById("guess-input").addEventListener("keydown", (e) => {
-    if (suggestions.length === 0) return;
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      activeSuggestionIndex = (activeSuggestionIndex + 1) % suggestions.length;
-      renderAutocomplete();
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      activeSuggestionIndex = (activeSuggestionIndex - 1 + suggestions.length) % suggestions.length;
-      renderAutocomplete();
-    } else if (e.key === "Enter" && activeSuggestionIndex >= 0) {
-      e.preventDefault();
-      pickSuggestion(activeSuggestionIndex);
-    } else if (e.key === "Escape") {
-      hideAutocomplete();
-    }
-  });
-
-  document.getElementById("guess-input").addEventListener("blur", () => {
-    setTimeout(hideAutocomplete, 100);
-  });
-
   // ---------- Wiring ----------
 
   document.getElementById("btn-play").addEventListener("click", startDeepCut);
@@ -297,10 +322,10 @@
     e.preventDefault();
     const input = document.getElementById("guess-input");
     const text = input.value.trim();
-    hideAutocomplete();
-    if (!text || !activeGame) return;
+    if (!text || !activeGame || input.disabled) return;
     activeGame.submitGuess(text);
+    input.value = "";
   });
 
-  renderHomeStats();
+  renderHomeState();
 })();

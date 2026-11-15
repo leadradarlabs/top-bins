@@ -55,13 +55,4 @@ function matchAnswer(guess, answers) {
   return best;
 }
 
-// Autocomplete candidates: answers whose last name contains the typed text so far.
-function filterSuggestions(query, answers, limit = 5) {
-  const q = normalizeName(query);
-  if (!q) return [];
-  return answers
-    .filter((a) => normalizeName(lastNameOf(a.name)).includes(q))
-    .slice(0, limit);
-}
-
-window.TopBinsFuzzy = { normalizeName, lastNameOf, editDistance, matchAnswer, filterSuggestions };
+window.TopBinsFuzzy = { normalizeName, lastNameOf, editDistance, matchAnswer };

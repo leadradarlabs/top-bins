@@ -1,5 +1,61 @@
 # Decisions
 
+## 2026-11-15 — Rework round 2: killed the dropdown, added Krillion-style meter + scheduler, disputed one correction with evidence
+
+Three changes from Neil's round-2 brief, all shipped:
+
+1. **Killed the autocomplete dropdown entirely** (deleted `filterSuggestions`
+   from `fuzzy.js`, removed all dropdown markup/wiring) — it was leaking
+   answers (typing one letter showed all 3-8 candidates). Kept generous
+   fuzzy autocorrect on submit (last name, edit distance ≤2). Wrong/
+   unrecognized guesses no longer end the prompt: the player retries while
+   time remains, and each wrong guess now costs 3 seconds off the clock
+   (Ballium's rule) — implemented in `game.js`'s `submitGuess`.
+2. **Krillion-style graphics**: a persistent vertical meter (score/700,
+   football-themed — a shot climbing toward the top corner, not Krillion's
+   ocean/depth framing) replaces the old per-answer horizontal rarity bar.
+   It had to live outside the tier-reveal overlay's DOM subtree (as a sibling
+   in `.game-body`, not a child of the full-screen overlay) so it stays
+   visible and animates while the reveal is up — see `index.html`'s
+   `.game-main`/`.meter-rail` split. Added a 3s preview phase before each
+   prompt's clock starts (`game.js`: `previewStart`/`timerStart` events,
+   input disabled until `timerStart`) and a results-screen rating band.
+3. **Midnight scheduler**: `seed.js` now computes "today" from
+   `Intl.DateTimeFormat` pinned to `America/New_York`, not the device's
+   local date — verified against crafted UTC timestamps straddling both EST
+   and EDT midnight. One attempt per day is enforced via `storage.js`
+   (`hasPlayedToday` gates `startDeepCut`); a 20s polling interval plus a
+   precise `setTimeout` at the exact reset moment both call the same
+   rollover check, so a page left open across midnight resets without a
+   reload.
+
+**Pushed back on the brief's dc-010 "fix" with evidence, rather than
+applying it.** The brief said Sheringham/Anelka/Campbell are NOT
+three-club Premier League hat-trick scorers and that the real answer is
+Ferdinand/Hasselbaink/Yakubu(4 clubs). A web-fetch agent read Wikipedia's
+"List of Premier League hat-tricks" article directly (not a search
+summary) and found its own lead sentence names exactly five three-club
+scorers: Anelka, Campbell, Ferdinand, Sheringham, Yakubu — matching what
+was already shipped. Hasselbaink is absent from that list, and Yakubu's
+page entry shows three clubs (Blackburn, Everton, Portsmouth), not four.
+Left dc-010 unchanged. This is flagged prominently to Neil rather than
+silently overriding his instruction, since a direct primary source
+contradicted it.
+
+**Strict re-verification pass (5 parallel forks, one per 10-prompt range,
+each pinning every answer to a specific season/match/stat) found one real
+error the earlier pass missed**: `dc-038` ("5+ Premier League hat-tricks")
+had Didier Drogba and Jermain Defoe, who each have only 3 — not 5+. Dropped
+both, rebuilt from a confirmed 5+ list (Agüero 12, Shearer 11, Fowler 9,
+Kane 8, Owen 8, Henry 8, Rooney 7, Suárez 6). `dc-019` also lost Chris
+Smalling (confirmed he was never sent off on his actual PL debut — a late,
+uneventful substitute appearance). All other 47 prompts held up against
+re-verification unchanged. Because every fork writes to the same single
+file (unlike the round-1 content expansion, where each fork owned a
+separate per-club file), they wrote to isolated scratchpad fragments
+instead of editing `deep-cut.json` directly, and the coordinator merged
+afterward — avoiding a concurrent-write race on one shared file.
+
 ## 2026-11-15 — Repo made public to enable free GitHub Pages
 
 GitHub's API rejected Pages setup on the private repo: "Your current plan

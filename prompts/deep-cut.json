@@ -210,7 +210,6 @@
       "answers": [
         { "name": "Joao Felix", "tier": 10 },
         { "name": "Laurent Koscielny", "tier": 25 },
-        { "name": "Chris Smalling", "tier": 50 },
         { "name": "Federico Fazio", "tier": 70 },
         { "name": "Samba Diakite", "tier": 85 },
         { "name": "Iain Turner", "tier": 100 }
@@ -422,10 +421,11 @@
       "answers": [
         { "name": "Sergio Aguero", "tier": 10 },
         { "name": "Alan Shearer", "tier": 25 },
-        { "name": "Harry Kane", "tier": 25 },
-        { "name": "Didier Drogba", "tier": 50 },
+        { "name": "Harry Kane", "tier": 50 },
+        { "name": "Thierry Henry", "tier": 50 },
         { "name": "Robbie Fowler", "tier": 70 },
-        { "name": "Jermain Defoe", "tier": 100 }
+        { "name": "Wayne Rooney", "tier": 85 },
+        { "name": "Luis Suarez", "tier": 100 }
       ]
     },
     {
