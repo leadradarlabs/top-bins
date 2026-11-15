@@ -8,7 +8,6 @@
         { "name": "Craig Bellamy", "tier": 25 },
         { "name": "Nicolas Anelka", "tier": 25 },
         { "name": "Peter Crouch", "tier": 50 },
-        { "name": "Darren Bent", "tier": 70 },
         { "name": "Marcus Bent", "tier": 85 },
         { "name": "Les Ferdinand", "tier": 100 }
       ]
@@ -413,10 +412,8 @@
       "answers": [
         { "name": "Rio Ferdinand", "tier": 10 },
         { "name": "Gary Neville", "tier": 25 },
-        { "name": "Yaya Toure", "tier": 25 },
-        { "name": "Phil Neville", "tier": 50 },
-        { "name": "Kolo Toure", "tier": 50 },
-        { "name": "Anton Ferdinand", "tier": 100 }
+        { "name": "Yaya Toure", "tier": 50 },
+        { "name": "Fabio Da Silva", "tier": 100 }
       ]
     },
     {

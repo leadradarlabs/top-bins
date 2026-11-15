@@ -19,7 +19,7 @@ function saveStore(data) {
   }
 }
 
-// modeKey examples: "deep-cut", "club:arsenal", "transfer"
+// modeKey is always "deep-cut" (single-mode game), kept as a param for clarity.
 function recordResult(modeKey, dateStr, score) {
   const store = loadStore();
   store.results = store.results || {};

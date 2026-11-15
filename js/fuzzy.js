@@ -1,4 +1,4 @@
-// Normalize + fuzzy match for typed player/club/manager names.
+// Normalize + fuzzy match for typed last names, plus autocomplete filtering.
 
 function normalizeName(str) {
   return str
@@ -8,6 +8,12 @@ function normalizeName(str) {
     .replace(/[^a-z0-9\s]/g, "") // strip punctuation
     .replace(/\s+/g, " ")
     .trim();
+}
+
+// Last name = last whitespace-separated token of the name, as given.
+function lastNameOf(fullName) {
+  const parts = fullName.trim().split(/\s+/);
+  return parts[parts.length - 1];
 }
 
 // Standard Levenshtein edit distance.
@@ -29,28 +35,33 @@ function editDistance(a, b) {
   return prev[n];
 }
 
-// Returns the matching answer object from `answers` if the guess matches
-// within edit distance <= 2 of the normalized full name, else null.
+// Matches the typed text against each answer's LAST NAME only (edit distance <= 2).
+// The guess's own last token is used, so typing a full name still works.
 function matchAnswer(guess, answers) {
-  const g = normalizeName(guess);
+  const g = normalizeName(lastNameOf(guess));
   if (!g) return null;
   let best = null;
   let bestDist = Infinity;
   for (const ans of answers) {
-    const candidates = [ans.name, ...(ans.aliases || [])];
-    for (const cand of candidates) {
-      const n = normalizeName(cand);
-      const maxLen = Math.max(g.length, n.length);
-      // Skip absurd length mismatches early (cheap guard, not a correctness rule).
-      if (Math.abs(g.length - n.length) > 2 && maxLen > 4) continue;
-      const dist = editDistance(g, n);
-      if (dist <= 2 && dist < bestDist) {
-        bestDist = dist;
-        best = ans;
-      }
+    const n = normalizeName(lastNameOf(ans.name));
+    const maxLen = Math.max(g.length, n.length);
+    if (Math.abs(g.length - n.length) > 2 && maxLen > 4) continue;
+    const dist = editDistance(g, n);
+    if (dist <= 2 && dist < bestDist) {
+      bestDist = dist;
+      best = ans;
     }
   }
   return best;
 }
 
-window.TopBinsFuzzy = { normalizeName, editDistance, matchAnswer };
+// Autocomplete candidates: answers whose last name contains the typed text so far.
+function filterSuggestions(query, answers, limit = 5) {
+  const q = normalizeName(query);
+  if (!q) return [];
+  return answers
+    .filter((a) => normalizeName(lastNameOf(a.name)).includes(q))
+    .slice(0, limit);
+}
+
+window.TopBinsFuzzy = { normalizeName, lastNameOf, editDistance, matchAnswer, filterSuggestions };

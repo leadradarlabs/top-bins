@@ -36,6 +36,46 @@ anything that doesn't hold up, add new prompts in the same JSON shape, and
 self-validate (JSON.parse, exactly one tier-100 answer, 3-8 answers per
 prompt) before finishing.
 
+## 2026-11-15 — Rework: cut to one mode, renamed Top Bins → Deep Cuts
+
+Neil's verdict on v1: three modes wasn't working. Reworked to a single
+mode (the daily game only) and renamed the product "Deep Cuts" everywhere
+user-facing (title, header, README, share card). Deleted
+`prompts/club-*.json`, `prompts/transfer.json`, and `js/windows.js`, and
+removed all mode-selection/club-picker/transfer-countdown UI and logic.
+`prompts/deep-cut.json` (50 prompts) is now the only content file.
+`docs/build-spec.md` is kept as a historical record of the original ask,
+not current instructions — see the note in CLAUDE.md.
+
+Kept: repo name and GitHub Pages URL (`leadradarlabs/top-bins`,
+`leadradarlabs.github.io/top-bins`) unchanged, since Neil asked for that
+specifically even though the product name changed. Kept the tier scheme
+and names as-is, including the "Top Bins" tier label at 100 points — that's
+a scoring term, not the product name, so it stays distinct from the rename.
+
+## 2026-11-15 — Last-name-only matching, with a new data constraint
+
+Switched matching from full-name fuzzy match to last-name-only: both the
+typed guess and each stored answer are reduced to their last whitespace
+token before comparing (edit distance ≤ 2). Typing a full name still works
+correctly, since the same last-token extraction is applied to the guess.
+
+This created a new validity rule the old full-name system didn't need: no
+two answers in the same prompt can share a last name, or the prompt becomes
+unsolvable (whichever one the fuzzy match picks, the player has no way to
+specify the other). Audited all 50 deep-cut prompts for this; found two
+violations and fixed both:
+- `dc-001` ("scored for 5+ PL clubs"): Darren Bent and Marcus Bent collided
+  on "Bent". Dropped Darren Bent (Marcus Bent and Les Ferdinand already
+  covered the high-tier slots).
+- `dc-037` ("has a brother who also played in the PL"): this prompt's whole
+  premise is sibling pairs, so three answer-pairs (the Nevilles, the
+  Ferdinands, the Tourés) collided by construction — any prompt about
+  siblings will, since siblings share a surname. Fixed by keeping only one
+  brother per pair (Rio Ferdinand, Gary Neville, Yaya Touré) and adding a
+  fourth, non-colliding sibling example (Fábio da Silva) for the tier-100
+  slot, rather than trying to patch a structurally incompatible prompt.
+
 ## Tier-count exception: some prompts legitimately have only 3 valid answers
 
 The build spec asks for "at least 4 tiers" per prompt, but some true
