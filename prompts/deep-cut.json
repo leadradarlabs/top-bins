@@ -114,6 +114,472 @@
         { "name": "Yakubu", "tier": 70 },
         { "name": "Kevin Campbell", "tier": 100 }
       ]
+    },
+    {
+      "id": "dc-011",
+      "text": "Name a player with 500 or more Premier League appearances.",
+      "answers": [
+        { "name": "Ryan Giggs", "tier": 10 },
+        { "name": "Gareth Barry", "tier": 25 },
+        { "name": "James Milner", "tier": 25 },
+        { "name": "Frank Lampard", "tier": 25 },
+        { "name": "David James", "tier": 50 },
+        { "name": "Gary Speed", "tier": 70 },
+        { "name": "Emile Heskey", "tier": 70 },
+        { "name": "Mark Schwarzer", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-012",
+      "text": "Name a player who has scored one of the ten fastest goals in Premier League history.",
+      "answers": [
+        { "name": "Alan Shearer", "tier": 25 },
+        { "name": "Shane Long", "tier": 25 },
+        { "name": "Ledley King", "tier": 50 },
+        { "name": "Philip Billing", "tier": 70 },
+        { "name": "Abdoulaye Doucoure", "tier": 85 },
+        { "name": "Mark Viduka", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-013",
+      "text": "Name a player who has played in the Premier League for both Manchester United and Manchester City.",
+      "answers": [
+        { "name": "Carlos Tevez", "tier": 10 },
+        { "name": "Andy Cole", "tier": 25 },
+        { "name": "Peter Schmeichel", "tier": 50 },
+        { "name": "Owen Hargreaves", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-014",
+      "text": "Name a player who scored a Premier League hat-trick at the age of 18 or under.",
+      "answers": [
+        { "name": "Michael Owen", "tier": 10 },
+        { "name": "Robbie Fowler", "tier": 25 },
+        { "name": "Evan Ferguson", "tier": 50 },
+        { "name": "Chris Bart-Williams", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-015",
+      "text": "Name a player among the oldest goalscorers in Premier League history.",
+      "answers": [
+        { "name": "Teddy Sheringham", "tier": 10 },
+        { "name": "James Milner", "tier": 25 },
+        { "name": "Ryan Giggs", "tier": 50 },
+        { "name": "Dean Windass", "tier": 70 },
+        { "name": "Stuart Pearce", "tier": 85 },
+        { "name": "Graham Alexander", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-016",
+      "text": "Name a player who has won the PFA Young Player of the Year award more than once.",
+      "answers": [
+        { "name": "Phil Foden", "tier": 10 },
+        { "name": "Wayne Rooney", "tier": 25 },
+        { "name": "Ryan Giggs", "tier": 25 },
+        { "name": "Dele Alli", "tier": 50 },
+        { "name": "Robbie Fowler", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-017",
+      "text": "Name a goalkeeper among the Premier League's all-time leaders for most clean sheets.",
+      "answers": [
+        { "name": "Petr Cech", "tier": 10 },
+        { "name": "David James", "tier": 25 },
+        { "name": "David de Gea", "tier": 25 },
+        { "name": "Mark Schwarzer", "tier": 50 },
+        { "name": "David Seaman", "tier": 70 },
+        { "name": "Nigel Martyn", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-018",
+      "text": "Name a player who has played in the Premier League for both Liverpool and Everton.",
+      "answers": [
+        { "name": "Nick Barmby", "tier": 25 },
+        { "name": "Abel Xavier", "tier": 70 },
+        { "name": "Don Hutchison", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-019",
+      "text": "Name a player who was sent off on their Premier League debut.",
+      "answers": [
+        { "name": "Joao Felix", "tier": 10 },
+        { "name": "Laurent Koscielny", "tier": 25 },
+        { "name": "Chris Smalling", "tier": 50 },
+        { "name": "Federico Fazio", "tier": 70 },
+        { "name": "Samba Diakite", "tier": 85 },
+        { "name": "Iain Turner", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-020",
+      "text": "Name a player among the five youngest goalscorers in Premier League history.",
+      "answers": [
+        { "name": "Max Dowman", "tier": 10 },
+        { "name": "Wayne Rooney", "tier": 25 },
+        { "name": "James Milner", "tier": 50 },
+        { "name": "Rio Ngumoha", "tier": 70 },
+        { "name": "James Vaughan", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-021",
+      "text": "Name a player who won the Premier League title as a player and later managed a Premier League club.",
+      "answers": [
+        { "name": "Roy Keane", "tier": 25 },
+        { "name": "Patrick Vieira", "tier": 50 },
+        { "name": "Bryan Robson", "tier": 70 },
+        { "name": "Paul Ince", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-022",
+      "text": "Name a player among the Premier League's all-time top 10 assist providers.",
+      "answers": [
+        { "name": "Kevin De Bruyne", "tier": 10 },
+        { "name": "Wayne Rooney", "tier": 25 },
+        { "name": "Frank Lampard", "tier": 25 },
+        { "name": "Ryan Giggs", "tier": 50 },
+        { "name": "Mohamed Salah", "tier": 50 },
+        { "name": "Cesc Fabregas", "tier": 70 },
+        { "name": "Dennis Bergkamp", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-023",
+      "text": "Name a player among the Premier League's all-time own-goal leaders.",
+      "answers": [
+        { "name": "Richard Dunne", "tier": 25 },
+        { "name": "Jamie Carragher", "tier": 50 },
+        { "name": "Phil Jagielka", "tier": 70 },
+        { "name": "Martin Skrtel", "tier": 70 },
+        { "name": "Wes Brown", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-024",
+      "text": "Name a player who has played for three or more Premier League 'Big Six' clubs.",
+      "answers": [
+        { "name": "Raheem Sterling", "tier": 25 },
+        { "name": "Nicolas Anelka", "tier": 50 },
+        { "name": "William Gallas", "tier": 70 },
+        { "name": "Emmanuel Adebayor", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-025",
+      "text": "Name a club that was promoted to the Premier League and relegated the very next season.",
+      "answers": [
+        { "name": "Reading", "tier": 25 },
+        { "name": "West Bromwich Albion", "tier": 50 },
+        { "name": "Watford", "tier": 70 },
+        { "name": "Burnley", "tier": 85 },
+        { "name": "Leicester City", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-026",
+      "text": "Name a goalkeeper who has won the Premier League Golden Glove award.",
+      "answers": [
+        { "name": "Petr Cech", "tier": 10 },
+        { "name": "Joe Hart", "tier": 25 },
+        { "name": "Pepe Reina", "tier": 50 },
+        { "name": "David Raya", "tier": 70 },
+        { "name": "Matz Sels", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-027",
+      "text": "Name a manager who won the Premier League title in his first season in charge of that club.",
+      "answers": [
+        { "name": "Jose Mourinho", "tier": 10 },
+        { "name": "Antonio Conte", "tier": 25 },
+        { "name": "Carlo Ancelotti", "tier": 50 },
+        { "name": "Manuel Pellegrini", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-028",
+      "text": "Name a club that has never been relegated from the Premier League.",
+      "answers": [
+        { "name": "Arsenal", "tier": 10 },
+        { "name": "Manchester United", "tier": 10 },
+        { "name": "Liverpool", "tier": 25 },
+        { "name": "Chelsea", "tier": 25 },
+        { "name": "Tottenham Hotspur", "tier": 50 },
+        { "name": "Everton", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-029",
+      "text": "Name a player who has scored a Premier League hat-trick after coming on as a substitute.",
+      "answers": [
+        { "name": "Son Heung-min", "tier": 10 },
+        { "name": "Romelu Lukaku", "tier": 25 },
+        { "name": "Jimmy Floyd Hasselbaink", "tier": 50 },
+        { "name": "Ole Gunnar Solskjaer", "tier": 70 },
+        { "name": "Steven Naismith", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-030",
+      "text": "Name a player who scored a Premier League hat-trick but still ended up on the losing side.",
+      "answers": [
+        { "name": "Matt Le Tissier", "tier": 25 },
+        { "name": "Roque Santa Cruz", "tier": 70 },
+        { "name": "Brian Brobbey", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-031",
+      "text": "Name a player among the Premier League's all-time most red-carded players.",
+      "answers": [
+        { "name": "Roy Keane", "tier": 25 },
+        { "name": "Patrick Vieira", "tier": 50 },
+        { "name": "Duncan Ferguson", "tier": 50 },
+        { "name": "Richard Dunne", "tier": 70 },
+        { "name": "Vinnie Jones", "tier": 85 },
+        { "name": "Lee Cattermole", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-032",
+      "text": "Name a manager among the all-time leaders for most Premier League Manager of the Month awards won.",
+      "answers": [
+        { "name": "Alex Ferguson", "tier": 10 },
+        { "name": "Arsene Wenger", "tier": 25 },
+        { "name": "Pep Guardiola", "tier": 50 },
+        { "name": "David Moyes", "tier": 70 },
+        { "name": "Jurgen Klopp", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-033",
+      "text": "Name a player who later returned to manage a Premier League club he once played for.",
+      "answers": [
+        { "name": "Frank Lampard", "tier": 10 },
+        { "name": "Ole Gunnar Solskjaer", "tier": 25 },
+        { "name": "Gianluca Vialli", "tier": 50 },
+        { "name": "Mark Hughes", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-034",
+      "text": "Name a manager among the longest-serving in Premier League history.",
+      "answers": [
+        { "name": "Alex Ferguson", "tier": 10 },
+        { "name": "Arsene Wenger", "tier": 25 },
+        { "name": "David Moyes", "tier": 70 },
+        { "name": "Sean Dyche", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-035",
+      "text": "Name a player who has won the Premier League Golden Boot.",
+      "answers": [
+        { "name": "Mohamed Salah", "tier": 10 },
+        { "name": "Thierry Henry", "tier": 25 },
+        { "name": "Alan Shearer", "tier": 25 },
+        { "name": "Didier Drogba", "tier": 50 },
+        { "name": "Carlos Tevez", "tier": 70 },
+        { "name": "Dimitar Berbatov", "tier": 70 },
+        { "name": "Dwight Yorke", "tier": 85 },
+        { "name": "Kevin Phillips", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-036",
+      "text": "Name a non-British or Irish manager who has won the Premier League title.",
+      "answers": [
+        { "name": "Pep Guardiola", "tier": 10 },
+        { "name": "Arsene Wenger", "tier": 10 },
+        { "name": "Jurgen Klopp", "tier": 25 },
+        { "name": "Jose Mourinho", "tier": 25 },
+        { "name": "Antonio Conte", "tier": 50 },
+        { "name": "Claudio Ranieri", "tier": 70 },
+        { "name": "Roberto Mancini", "tier": 85 },
+        { "name": "Manuel Pellegrini", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-037",
+      "text": "Name a player who has a brother who has also played in the Premier League.",
+      "answers": [
+        { "name": "Rio Ferdinand", "tier": 10 },
+        { "name": "Gary Neville", "tier": 25 },
+        { "name": "Yaya Toure", "tier": 25 },
+        { "name": "Phil Neville", "tier": 50 },
+        { "name": "Kolo Toure", "tier": 50 },
+        { "name": "Anton Ferdinand", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-038",
+      "text": "Name a player who has scored 5 or more Premier League hat-tricks.",
+      "answers": [
+        { "name": "Sergio Aguero", "tier": 10 },
+        { "name": "Alan Shearer", "tier": 25 },
+        { "name": "Harry Kane", "tier": 25 },
+        { "name": "Didier Drogba", "tier": 50 },
+        { "name": "Robbie Fowler", "tier": 70 },
+        { "name": "Jermain Defoe", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-039",
+      "text": "Name a player who has scored 5 goals in a single Premier League match.",
+      "answers": [
+        { "name": "Sergio Aguero", "tier": 10 },
+        { "name": "Jermain Defoe", "tier": 25 },
+        { "name": "Dimitar Berbatov", "tier": 50 },
+        { "name": "Alan Shearer", "tier": 70 },
+        { "name": "Andy Cole", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-040",
+      "text": "Name a player who has scored 100 or more Premier League goals.",
+      "answers": [
+        { "name": "Alan Shearer", "tier": 10 },
+        { "name": "Harry Kane", "tier": 10 },
+        { "name": "Wayne Rooney", "tier": 25 },
+        { "name": "Thierry Henry", "tier": 25 },
+        { "name": "Mohamed Salah", "tier": 25 },
+        { "name": "Michael Owen", "tier": 50 },
+        { "name": "Robbie Fowler", "tier": 70 },
+        { "name": "Darren Bent", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-041",
+      "text": "Name a player who played for Leicester City in their 2015-16 title-winning season.",
+      "answers": [
+        { "name": "Jamie Vardy", "tier": 10 },
+        { "name": "Riyad Mahrez", "tier": 25 },
+        { "name": "N'Golo Kante", "tier": 25 },
+        { "name": "Danny Drinkwater", "tier": 50 },
+        { "name": "Wes Morgan", "tier": 50 },
+        { "name": "Christian Fuchs", "tier": 70 },
+        { "name": "Marc Albrighton", "tier": 70 },
+        { "name": "Leonardo Ulloa", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-042",
+      "text": "Name a player who played for Blackburn Rovers in their 1994-95 title-winning season.",
+      "answers": [
+        { "name": "Alan Shearer", "tier": 10 },
+        { "name": "Tim Flowers", "tier": 25 },
+        { "name": "Colin Hendry", "tier": 25 },
+        { "name": "Graeme Le Saux", "tier": 50 },
+        { "name": "Chris Sutton", "tier": 50 },
+        { "name": "Tim Sherwood", "tier": 70 },
+        { "name": "Henning Berg", "tier": 85 },
+        { "name": "Paul Warhurst", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-043",
+      "text": "Name a player who has scored for Nottingham Forest in the Premier League.",
+      "answers": [
+        { "name": "Chris Wood", "tier": 10 },
+        { "name": "Taiwo Awoniyi", "tier": 25 },
+        { "name": "Brennan Johnson", "tier": 25 },
+        { "name": "Stan Collymore", "tier": 50 },
+        { "name": "Bryan Roy", "tier": 85 },
+        { "name": "Pierre van Hooijdonk", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-044",
+      "text": "Name a player who played for Sheffield Wednesday in the Premier League.",
+      "answers": [
+        { "name": "Paolo Di Canio", "tier": 10 },
+        { "name": "Chris Waddle", "tier": 25 },
+        { "name": "David Hirst", "tier": 50 },
+        { "name": "Des Walker", "tier": 70 },
+        { "name": "Andy Sinton", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-045",
+      "text": "Name a player who played for Wimbledon's 'Crazy Gang' in the Premier League.",
+      "answers": [
+        { "name": "Vinnie Jones", "tier": 10 },
+        { "name": "Dean Holdsworth", "tier": 25 },
+        { "name": "John Fashanu", "tier": 50 },
+        { "name": "Robbie Earle", "tier": 70 },
+        { "name": "Efan Ekoku", "tier": 85 },
+        { "name": "Marcus Gayle", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-046",
+      "text": "Name a player who played for Coventry City in the Premier League.",
+      "answers": [
+        { "name": "Dion Dublin", "tier": 10 },
+        { "name": "Robbie Keane", "tier": 25 },
+        { "name": "Mustapha Hadji", "tier": 50 },
+        { "name": "Noel Whelan", "tier": 70 },
+        { "name": "John Salako", "tier": 85 },
+        { "name": "Gary Breen", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-047",
+      "text": "Name a player who played for Leeds United in the early Premier League years (1992-96).",
+      "answers": [
+        { "name": "Eric Cantona", "tier": 10 },
+        { "name": "Gary McAllister", "tier": 25 },
+        { "name": "Gordon Strachan", "tier": 50 },
+        { "name": "Tony Yeboah", "tier": 70 },
+        { "name": "Rod Wallace", "tier": 85 },
+        { "name": "Tony Dorigo", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-048",
+      "text": "Name a player who played for Newcastle United in the famous 1995-96 'Entertainers' season.",
+      "answers": [
+        { "name": "Les Ferdinand", "tier": 10 },
+        { "name": "Peter Beardsley", "tier": 25 },
+        { "name": "David Ginola", "tier": 25 },
+        { "name": "Rob Lee", "tier": 50 },
+        { "name": "Philippe Albert", "tier": 70 },
+        { "name": "Keith Gillespie", "tier": 70 },
+        { "name": "Pavel Srnicek", "tier": 85 },
+        { "name": "Steve Watson", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-049",
+      "text": "Name a player who played for Ipswich Town in their surprise 2000-01 UEFA Cup-qualifying season.",
+      "answers": [
+        { "name": "Matt Holland", "tier": 10 },
+        { "name": "Marcus Stewart", "tier": 25 },
+        { "name": "Finidi George", "tier": 50 },
+        { "name": "Jamie Clapham", "tier": 70 },
+        { "name": "Titus Bramble", "tier": 85 },
+        { "name": "Richard Naylor", "tier": 100 }
+      ]
+    },
+    {
+      "id": "dc-050",
+      "text": "Name a player who has played for both Chelsea and Arsenal.",
+      "answers": [
+        { "name": "Ashley Cole", "tier": 10 },
+        { "name": "David Luiz", "tier": 25 },
+        { "name": "Petr Cech", "tier": 25 },
+        { "name": "Willian", "tier": 50 },
+        { "name": "Nicolas Anelka", "tier": 70 },
+        { "name": "William Gallas", "tier": 100 }
+      ]
     }
   ]
 }
