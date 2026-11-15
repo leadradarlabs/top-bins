@@ -55,6 +55,191 @@
         { "name": "Willian", "tier": 85 },
         { "name": "Shaun Wright-Phillips", "tier": 100 }
       ]
+    },
+    {
+      "id": "t-006",
+      "text": "Name a player signed on transfer deadline day.",
+      "answers": [
+        { "name": "Fernando Torres", "tier": 10 },
+        { "name": "Andy Carroll", "tier": 25 },
+        { "name": "Dimitar Berbatov", "tier": 50 },
+        { "name": "Carlos Tevez", "tier": 70 },
+        { "name": "Robinho", "tier": 85 },
+        { "name": "Luis Suarez", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-007",
+      "text": "Name one of the most expensive goalkeeper transfers in Premier League history.",
+      "answers": [
+        { "name": "Kepa Arrizabalaga", "tier": 10 },
+        { "name": "Alisson", "tier": 25 },
+        { "name": "Ederson", "tier": 50 },
+        { "name": "Jordan Pickford", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-008",
+      "text": "Name a player involved in a direct swap deal between two Premier League clubs.",
+      "answers": [
+        { "name": "Alexis Sanchez", "tier": 10 },
+        { "name": "Henrikh Mkhitaryan", "tier": 25 },
+        { "name": "Ashley Cole", "tier": 50 },
+        { "name": "William Gallas", "tier": 70 },
+        { "name": "Andy Cole", "tier": 85 },
+        { "name": "Keith Gillespie", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-009",
+      "text": "Name a player whose transfer broke the British (UK) transfer fee record.",
+      "answers": [
+        { "name": "Paul Pogba", "tier": 10 },
+        { "name": "Alexander Isak", "tier": 25 },
+        { "name": "Enzo Fernandez", "tier": 50 },
+        { "name": "Rio Ferdinand", "tier": 70 },
+        { "name": "Alan Shearer", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-010",
+      "text": "Name a Premier League transfer widely considered one of the biggest expensive flops relative to its fee.",
+      "answers": [
+        { "name": "Fernando Torres", "tier": 10 },
+        { "name": "Romelu Lukaku", "tier": 25 },
+        { "name": "Andy Carroll", "tier": 50 },
+        { "name": "Kepa Arrizabalaga", "tier": 70 },
+        { "name": "Juan Sebastian Veron", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-011",
+      "text": "Name a player who left a Premier League club and later returned to it for a second spell.",
+      "answers": [
+        { "name": "Cristiano Ronaldo", "tier": 10 },
+        { "name": "Wayne Rooney", "tier": 25 },
+        { "name": "Didier Drogba", "tier": 50 },
+        { "name": "Thierry Henry", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-012",
+      "text": "Name a player signed by a Premier League club for a transfer fee of £100m or more.",
+      "answers": [
+        { "name": "Jack Grealish", "tier": 10 },
+        { "name": "Declan Rice", "tier": 25 },
+        { "name": "Alexander Isak", "tier": 50 },
+        { "name": "Moises Caicedo", "tier": 70 },
+        { "name": "Enzo Fernandez", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-013",
+      "text": "Name a player Chelsea signed in the summer of 2003, Roman Abramovich's first transfer window as owner.",
+      "answers": [
+        { "name": "Hernan Crespo", "tier": 10 },
+        { "name": "Damien Duff", "tier": 25 },
+        { "name": "Claude Makelele", "tier": 25 },
+        { "name": "Adrian Mutu", "tier": 50 },
+        { "name": "Juan Sebastian Veron", "tier": 70 },
+        { "name": "Scott Parker", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-014",
+      "text": "Name a player Liverpool signed in summer 2018, funded in part by Philippe Coutinho's January sale to Barcelona.",
+      "answers": [
+        { "name": "Alisson", "tier": 10 },
+        { "name": "Fabinho", "tier": 25 },
+        { "name": "Naby Keita", "tier": 50 },
+        { "name": "Xherdan Shaqiri", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-015",
+      "text": "Name a player signed by a Premier League club for a club-record fee in the same summer as a FIFA World Cup.",
+      "answers": [
+        { "name": "Angel Di Maria", "tier": 10 },
+        { "name": "Kepa Arrizabalaga", "tier": 50 },
+        { "name": "Alisson", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-016",
+      "text": "Name a player who has held Arsenal's club-record transfer fee at some point.",
+      "answers": [
+        { "name": "Declan Rice", "tier": 10 },
+        { "name": "Pierre-Emerick Aubameyang", "tier": 25 },
+        { "name": "Mesut Ozil", "tier": 50 },
+        { "name": "Nicolas Pepe", "tier": 70 },
+        { "name": "Alexandre Lacazette", "tier": 85 },
+        { "name": "Sylvain Wiltord", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-017",
+      "text": "Name a player who has held Tottenham Hotspur's club-record transfer fee at some point.",
+      "answers": [
+        { "name": "Sandro Tonali", "tier": 10 },
+        { "name": "Tanguy Ndombele", "tier": 25 },
+        { "name": "Davinson Sanchez", "tier": 50 },
+        { "name": "Mateus Fernandes", "tier": 70 },
+        { "name": "Roberto Soldado", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-018",
+      "text": "Name a player who has held Manchester City's club-record transfer fee at some point.",
+      "answers": [
+        { "name": "Jack Grealish", "tier": 10 },
+        { "name": "Rodri", "tier": 25 },
+        { "name": "Riyad Mahrez", "tier": 50 },
+        { "name": "Aymeric Laporte", "tier": 70 },
+        { "name": "Kevin De Bruyne", "tier": 85 },
+        { "name": "Robinho", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-019",
+      "text": "Name a big-money Premier League transfer that's widely regarded as a flop.",
+      "answers": [
+        { "name": "Alvaro Morata", "tier": 10 },
+        { "name": "Sebastien Haller", "tier": 25 },
+        { "name": "Christian Benteke", "tier": 50 },
+        { "name": "Tanguy Ndombele", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-020",
+      "text": "Name a player who transferred directly between two Premier League 'Big Six' clubs.",
+      "answers": [
+        { "name": "Carlos Tevez", "tier": 10 },
+        { "name": "Juan Mata", "tier": 25 },
+        { "name": "Petr Cech", "tier": 50 },
+        { "name": "Danny Welbeck", "tier": 70 },
+        { "name": "Emmanuel Adebayor", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-021",
+      "text": "Name a player sold by a Premier League club to Real Madrid or Barcelona.",
+      "answers": [
+        { "name": "Gareth Bale", "tier": 10 },
+        { "name": "Luis Suarez", "tier": 25 },
+        { "name": "Philippe Coutinho", "tier": 50 },
+        { "name": "Eden Hazard", "tier": 70 },
+        { "name": "Thibaut Courtois", "tier": 100 }
+      ]
+    },
+    {
+      "id": "t-022",
+      "text": "Name a player signed by Newcastle United after the 2021 Saudi PIF-backed takeover.",
+      "answers": [
+        { "name": "Alexander Isak", "tier": 10 },
+        { "name": "Sandro Tonali", "tier": 25 },
+        { "name": "Bruno Guimaraes", "tier": 50 },
+        { "name": "Harvey Barnes", "tier": 100 }
+      ]
     }
   ]
 }
